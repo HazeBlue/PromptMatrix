@@ -1,0 +1,42 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pm-grad-1" x1="18" y1="14" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.5" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="pm-grad-2" x1="24" y1="32" x2="104" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#EAB308" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="pm-glow" x="-40" y="-40" width="208" height="208" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.22
+                0 0 0 0 0.69
+                0 0 0 0 0.96
+                0 0 0 0.6 0"/>
+    </filter>
+  </defs>
+  <rect x="16" y="16" width="96" height="96" rx="26" fill="#020617"/>
+  <rect x="16" y="16" width="96" height="96" rx="26" stroke="url(#pm-grad-1)" stroke-width="2"/>
+  <g filter="url(#pm-glow)">
+    <circle cx="40" cy="36" r="9" fill="#38BDF8" fill-opacity="0.9"/>
+    <circle cx="64" cy="64" r="9" fill="#6366F1" fill-opacity="0.9"/>
+    <circle cx="88" cy="92" r="9" fill="#EC4899" fill-opacity="0.9"/>
+  </g>
+  <rect x="32" y="40" width="64" height="48" rx="12" fill="#020617"/>
+  <rect x="32" y="40" width="64" height="48" rx="12" stroke="url(#pm-grad-2)" stroke-width="2"/>
+  <path d="M40 52H88" stroke="#E5E7EB" stroke-width="3" stroke-linecap="round" stroke-opacity="0.85"/>
+  <path d="M40 64H72" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M40 76H64" stroke="#6B7280" stroke-width="3" stroke-linecap="round" stroke-opacity="0.9"/>
+  <circle cx="44" cy="36" r="4" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
+  <circle cx="64" cy="56" r="4" fill="#020617" stroke="#6366F1" stroke-width="2"/>
+  <circle cx="84" cy="76" r="4" fill="#020617" stroke="#EC4899" stroke-width="2"/>
+  <path d="M44 40L64 56L84 76" stroke="#F9FAFB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <text x="64" y="112" text-anchor="middle" fill="#9CA3AF" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', 'Segoe UI', sans-serif" font-size="10" letter-spacing="0.12em">
+    PROMPTMATRIX
+  </text>
+</svg>
+
+

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>PromptMatrix · 多风格 AI Prompt 可视生成器</title>
+    <meta
+      name="description"
+      content="PromptMatrix 是一个多风格 AI Prompt 可视生成器，支持学术、营销、极简、角色扮演、分析、创意写作等多种风格，可一键复制与导出 Markdown。"
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg" />
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Theme Overrides -->
+    <link rel="stylesheet" href="./themes/dark.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Top Navigation -->
+      <header class="app-header glass-surface">
+        <div class="logo-area">
+          <img src="./assets/logo.svg" alt="PromptMatrix Logo" class="logo" />
+          <div class="logo-text">
+            <span class="logo-title">PromptMatrix</span>
+            <span class="logo-subtitle">Multi‑Style Prompt Visual Composer</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <div class="theme-toggle">
+            <button
+              class="theme-chip"
+              data-theme-target="dark"
+              type="button"
+            >
+              Dark
+            </button>
+            <button
+              class="theme-chip"
+              data-theme-target="neon"
+              type="button"
+            >
+              Neon
+            </button>
+            <button
+              class="theme-chip"
+              data-theme-target="retro"
+              type="button"
+            >
+              Retro
+            </button>
+          </div>
+          <div class="lang-indicator">
+            <span class="lang-chip">中 / EN</span>
+          </div>
+          <a
+            href="#support"
+            class="pill-link"
+            title="Support PromptMatrix"
+          >
+            <span>Support</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="app-main">
+        <section class="panel panel-left glass-surface">
+          <header class="panel-header">
+            <div>
+              <h1 class="panel-title">
+                多风格 Prompt 工厂
+                <span class="en-sub">Multi‑Style Prompt Factory</span>
+              </h1>
+              <p class="panel-description">
+                为你的任务选择一种 Prompt 设计风格，并在右侧实时查看结构化 Prompt 结果。
+                <br />
+                <span class="en-sub">
+                  Pick a prompt design style for your task and preview the
+                  structured prompt on the right in real time.
+                </span>
+              </p>
+            </div>
+            <div class="badge-row">
+              <span class="badge">No Backend</span>
+              <span class="badge">Cloudflare Pages Ready</span>
+            </div>
+          </header>
+
+          <!-- Style Selector -->
+          <section class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">
+                1. 选择风格
+                <span class="en-sub">1. Choose a style</span>
+              </h2>
+              <p class="section-caption">
+                为你的任务选择一种适合的 Prompt 风格。
+                <br />
+                <span class="en-sub">
+                  Pick a prompt style that best matches your use case.
+                </span>
+              </p>
+            </div>
+            <div class="style-grid" id="styleGrid">
+              <!-- Style cards will be enhanced by JS but markup stays semantic -->
+              <button
+                class="style-card is-active"
+                data-style-id="academic"
+                type="button"
+              >
+                <span class="style-label">
+                  学术风格
+                  <span class="en-sub-inline">Academic</span>
+                </span>
+                <span class="style-chip">Academic</span>
+                <p class="style-desc">
+                  严谨、结构化、引用规范，适合论文、调研与技术报告。
+                  <br />
+                  <span class="en-sub">
+                    Precise, structured and citation‑friendly. Great for
+                    papers, research and technical reports.
+                  </span>
+                </p>
+              </button>
+              <button
+                class="style-card"
+                data-style-id="marketing"
+                type="button"
+              >
+                <span class="style-label">
+                  营销风格
+                  <span class="en-sub-inline">Marketing</span>
+                </span>
+                <span class="style-chip">Marketing</span>
+                <p class="style-desc">
+                  强调卖点与转化率，适合广告、文案、活动策划。
+                  <br />
+                  <span class="en-sub">
+                    Benefit‑ and conversion‑oriented copy for ads,
+                    campaigns and growth content.
+                  </span>
+                </p>
+              </button>
+              <button class="style-card" data-style-id="minimal" type="button">
+                <span class="style-label">
+                  极简风格
+                  <span class="en-sub-inline">Minimal</span>
+                </span>
+                <span class="style-chip">Minimal</span>
+                <p class="style-desc">
+                  精简指令与约束，追求清晰、可复用与可组合。
+                  <br />
+                  <span class="en-sub">
+                    Compact, reusable prompts with just enough structure.
+                  </span>
+                </p>
+              </button>
+              <button
+                class="style-card"
+                data-style-id="roleplay"
+                type="button"
+              >
+                <span class="style-label">
+                  角色扮演风格
+                  <span class="en-sub-inline">Role Play</span>
+                </span>
+                <span class="style-chip">Role Play</span>
+                <p class="style-desc">
+                  赋予 AI 明确身份与语气，适合客服、导师、顾问等场景。
+                  <br />
+                  <span class="en-sub">
+                    Give the AI a clear persona and voice for support
+                    agents, tutors, advisors and more.
+                  </span>
+                </p>
+              </button>
+              <button class="style-card" data-style-id="analytic" type="button">
+                <span class="style-label">
+                  分析型风格
+                  <span class="en-sub-inline">Analytic</span>
+                </span>
+                <span class="style-chip">Analytic</span>
+                <p class="style-desc">
+                  偏向推理与拆解，适合策略分析、代码审查、案例解析。
+                  <br />
+                  <span class="en-sub">
+                    Decomposes problems, compares options and surfaces
+                    trade‑offs and risks.
+                  </span>
+                </p>
+              </button>
+              <button
+                class="style-card"
+                data-style-id="creative"
+                type="button"
+              >
+                <span class="style-label">
+                  创意写作风格
+                  <span class="en-sub-inline">Creative Writing</span>
+                </span>
+                <span class="style-chip">Creative</span>
+                <p class="style-desc">
+                  更具画面感与故事性，适合小说、剧本、世界观构建。
+                  <br />
+                  <span class="en-sub">
+                    Vivid, atmospheric prompts for stories, scripts and
+                    world‑building.
+                  </span>
+                </p>
+              </button>
+            </div>
+          </section>
+
+          <!-- Parameters / Structure -->
+          <section class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">
+                2. 定义结构
+                <span class="en-sub">2. Define structure</span>
+              </h2>
+              <p class="section-caption">
+                Prompt 会被拆分为 system / user / examples / constraints /
+                output format。
+                <br />
+                <span class="en-sub">
+                  The final prompt will be organised into system / user /
+                  examples / constraints / output format blocks.
+                </span>
+              </p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="taskSummary">
+                任务概述
+                <span class="en-sub-inline">Task summary</span>
+                <span class="field-hint">
+                  一句话说明你要做什么
+                  <span class="en-sub-inline">
+                    · Describe your task in one sentence
+                  </span>
+                </span>
+              </label>
+              <input
+                id="taskSummary"
+                class="text-input"
+                type="text"
+                placeholder="例如：为一款专注极客人群的笔记应用设计官网文案"
+              />
+            </div>
+
+            <div class="field-columns">
+              <div class="field-group">
+                <label class="field-label" for="tone">
+                  语气 / Tone
+                  <span class="en-sub-inline">Tone (optional)</span>
+                  <span class="field-hint">
+                    可选，覆盖风格默认设置
+                    <span class="en-sub-inline">
+                      · Optional, overrides default style tone
+                    </span>
+                  </span>
+                </label>
+                <input
+                  id="tone"
+                  class="text-input"
+                  type="text"
+                  placeholder="例如：专业但不失亲和、适度幽默"
+                />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="audience">
+                  目标受众
+                  <span class="en-sub-inline">Target audience</span>
+                  <span class="field-hint">
+                    谁会阅读这段内容？
+                    <span class="en-sub-inline">
+                      · Who is going to read this?
+                    </span>
+                  </span>
+                </label>
+                <input
+                  id="audience"
+                  class="text-input"
+                  type="text"
+                  placeholder="例如：对生产力工具有高要求的开发者与创作者"
+                />
+              </div>
+            </div>
+
+            <details class="advanced-toggle">
+              <summary>
+                高级选项 · 自定义结构块
+                <span class="en-sub-inline">
+                  · Advanced · customise prompt blocks
+                </span>
+              </summary>
+              <div class="advanced-grid">
+                <div class="field-group">
+                  <label class="field-label" for="systemPrompt">
+                    System Prompt
+                    <span class="field-hint">
+                      为 AI 定义角色与工作方式
+                      <span class="en-sub-inline">
+                        · Define the AI’s role and working style
+                      </span>
+                    </span>
+                  </label>
+                  <textarea
+                    id="systemPrompt"
+                    class="textarea"
+                    rows="3"
+                    placeholder="例如：你是一名擅长 SaaS 产品定位与转化率优化的高级文案策略顾问..."
+                  ></textarea>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="userPrompt">
+                    User Prompt
+                    <span class="field-hint">
+                      告诉 AI 你具体要什么
+                      <span class="en-sub-inline">
+                        · Tell the AI exactly what you want
+                      </span>
+                    </span>
+                  </label>
+                  <textarea
+                    id="userPrompt"
+                    class="textarea"
+                    rows="3"
+                    placeholder="例如：根据上述角色，为我们的产品生成一套官网首页文案框架..."
+                  ></textarea>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="examples">
+                    Examples
+                    <span class="field-hint">
+                      可选，给 AI 看几个示例
+                      <span class="en-sub-inline">
+                        · Optional examples for the model
+                      </span>
+                    </span>
+                  </label>
+                  <textarea
+                    id="examples"
+                    class="textarea"
+                    rows="3"
+                    placeholder="例如：提供 1-2 个你喜欢的文案示例，或过去的产出片段..."
+                  ></textarea>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="constraints">
+                    Constraints
+                    <span class="field-hint">
+                      限制条件与边界
+                      <span class="en-sub-inline">
+                        · Constraints, guardrails and don’ts
+                      </span>
+                    </span>
+                  </label>
+                  <textarea
+                    id="constraints"
+                    class="textarea"
+                    rows="3"
+                    placeholder="例如：避免使用夸张承诺；必须可被 18-45 岁人群理解..."
+                  ></textarea>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="outputFormat">
+                    Output Format
+                    <span class="field-hint">
+                      期望的输出结构 / 格式
+                      <span class="en-sub-inline">
+                        · Desired structure / formatting of the answer
+                      </span>
+                    </span>
+                  </label>
+                  <textarea
+                    id="outputFormat"
+                    class="textarea"
+                    rows="3"
+                    placeholder="例如：使用 Markdown 标题分区块，包含 Hero 文案、Feature 列表、FAQ..."
+                  ></textarea>
+                </div>
+              </div>
+            </details>
+          </section>
+        </section>
+
+        <!-- Preview Panel -->
+        <section class="panel panel-right glass-surface">
+          <header class="panel-header preview-header">
+            <div>
+              <h2 class="panel-title">
+                实时 Prompt 预览
+                <span class="en-sub">Live prompt preview</span>
+              </h2>
+              <p class="panel-description">
+                可直接粘贴到 ChatGPT / Claude / Gemini / 本地 LLM。
+                <br />
+                <span class="en-sub">
+                  Copy‑paste directly into ChatGPT, Claude, Gemini or
+                  your local LLM.
+                </span>
+              </p>
+            </div>
+            <div class="preview-actions">
+              <button id="btnCopyPlain" class="btn ghost" type="button">
+                复制 Prompt / Copy
+              </button>
+              <button id="btnExportMd" class="btn primary" type="button">
+                导出为 Markdown / Export .md
+              </button>
+            </div>
+          </header>
+
+          <div class="preview-meta">
+            <span id="currentStyleLabel" class="pill pill-soft">
+              当前风格：学术风格 · Academic
+            </span>
+            <span id="lengthIndicator" class="pill pill-ghost">
+              字数：0
+            </span>
+          </div>
+
+          <div id="previewContainer" class="preview-container">
+            <pre id="previewContent" class="preview-code-block"></pre>
+          </div>
+
+          <footer class="preview-footer">
+            <p class="hint">
+              小技巧：可以将此 Prompt 保存到你的 Prompt 库（如 Notion /
+              Obsidian），复用时只需修改任务概述与受众即可。
+              <br />
+              <span class="en-sub">
+                Tip: Save this prompt to your personal library (Notion /
+                Obsidian, etc.) and only tweak the task and audience next
+                time.
+              </span>
+            </p>
+          </footer>
+        </section>
+      </main>
+
+      <!-- Support / Donation Section -->
+      <section id="support" class="support-section glass-surface">
+        <div class="support-main">
+          <h2 class="support-title">
+            Support the project
+            <span class="en-sub">支持这个项目</span>
+          </h2>
+          <p class="support-description">
+            如果 PromptMatrix 对你有帮助，欢迎通过加密货币支持本项目的持续维护与设计优化。
+            <br />
+            <span class="en-sub">
+              If PromptMatrix is useful to you, consider supporting its
+              ongoing maintenance and design work via crypto donations.
+            </span>
+          </p>
+          <div class="support-grid">
+            <article class="support-card">
+              <header class="support-card-header">
+                <span class="support-asset">BTC</span>
+                <span class="support-network">Bitcoin</span>
+              </header>
+              <p class="support-address">
+                地址（占位）Address (placeholder)：
+                <span>bc1qk0wxq3dhy5rfyjzqqa6l4k26p4cggrr2cdcrtr</span>
+              </p>
+              <div class="support-qr">
+                <img src="img/IMG_1301.PNG" alt="BTC QR" />
+              </div>
+            </article>
+            <article class="support-card">
+                <header class="support-card-header">
+                  <span class="support-asset">BTC</span>
+                  <span class="support-network">Bitcoin</span>
+                </header>
+                <p class="support-address">
+                  地址（占位）Address (placeholder)：
+                  <span>bc1qymcs27w4ah6h37rczzczm9c9meppd30tke6lc3</span>
+                </p>
+                <div class="support-qr">
+                  <img src="img/IMG_1304.PNG" alt="BTC QR" />
+                </div>
+              </article>
+            <article class="support-card">
+              <header class="support-card-header">
+                <span class="support-asset">ETH</span>
+                <span class="support-network">Ethereum</span>
+              </header>
+              <p class="support-address">
+                地址（占位）Address (placeholder)：
+                <span>0x3ea65897e87747Bea409aBcAe74F4c929083B91B</span>
+              </p>
+              <div class="support-qr">
+                <img src="img/IMG_1303.PNG" alt="ETH QR" />
+              </div>
+            </article>
+            <article class="support-card">
+              <header class="support-card-header">
+                <span class="support-asset">USDT</span>
+                <span class="support-network">USDT (ERC20)</span>
+              </header>
+              <p class="support-address">
+                地址（占位）Address (placeholder)：
+                <span>0x3ea65897e87747Bea409aBcAe74F4c929083B91B</span>
+              </p>
+              <div class="support-qr">
+                <img src="img/IMG_1303.PNG" alt="USDT QR" />
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="support-preview">
+          <img
+            src="img/1.PNG"
+            alt="PromptMatrix Preview"
+            class="support-preview-image"
+          />
+
+          </p>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <p>
+          为热爱 Prompt 的你精心打造
+          <span class="footer-dot"></span>
+          Crafted with care for prompt nerds
+          <span class="footer-dot"></span>
+          欢迎分享到 Reddit / Twitter / X
+        </p>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
+

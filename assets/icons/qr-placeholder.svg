@@ -1,0 +1,23 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="160" height="160" rx="18" fill="#020617"/>
+  <rect x="10" y="10" width="140" height="140" rx="14" fill="#020617" stroke="#1F2937" stroke-width="2"/>
+  <rect x="22" y="22" width="36" height="36" rx="6" fill="#020617" stroke="#4B5563" stroke-width="2"/>
+  <rect x="28" y="28" width="24" height="24" rx="4" fill="#111827"/>
+  <rect x="102" y="22" width="36" height="36" rx="6" fill="#020617" stroke="#4B5563" stroke-width="2"/>
+  <rect x="108" y="28" width="24" height="24" rx="4" fill="#111827"/>
+  <rect x="22" y="102" width="36" height="36" rx="6" fill="#020617" stroke="#4B5563" stroke-width="2"/>
+  <rect x="28" y="108" width="24" height="24" rx="4" fill="#111827"/>
+  <rect x="64" y="64" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="84" y="64" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="76" y="80" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="96" y="84" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="60" y="92" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="112" y="104" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="88" y="108" width="12" height="12" fill="#E5E7EB"/>
+  <rect x="72" y="112" width="12" height="12" fill="#E5E7EB"/>
+  <text x="80" y="148" text-anchor="middle" fill="#6B7280" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', 'Segoe UI', sans-serif" font-size="10">
+    QR PLACEHOLDER
+  </text>
+</svg>
+
+
