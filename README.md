@@ -132,22 +132,6 @@ PromptMatrix 完全由静态文件构成，非常适合部署到 **Cloudflare Pa
 
 ---
 
-### 打赏 / Support the project
-
-如果 PromptMatrix 对你有帮助，欢迎通过以下任意方式支持项目的持续维护与设计打磨：
-
-- **BTC（比特币）**
-  - 地址（占位）：`bc1qk0wxq3dhy5rfyjzqqa6l4k26p4cggrr2cdcrtr`
-  - 地址（占位）：`bc1qymcs27w4ah6h37rczzczm9c9meppd30tke6lc3`
-
-- **ETH（以太坊）**
-  - 地址（占位）：`0x3ea65897e87747Bea409aBcAe74F4c929083B91B`
-
-- **USDT（ERC20）**
-  - 地址（占位）：`0x3ea65897e87747Bea409aBcAe74F4c929083B91B`
-
----
-
 ### Star 请求语
 
 如果你觉得这个项目：
